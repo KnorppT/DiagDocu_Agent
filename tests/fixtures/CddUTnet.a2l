@@ -1,0 +1,42 @@
+/* ASAP2 example file for CddUTnet module */
+/begin PROJECT CddUTnet_Project ""
+  /begin MODULE CddUTnet_Module ""
+
+    /begin MEASUREMENT Rbe_CddUTnet_UTnet1PlausStatus "Status of UTnet1 plausibility DFC"
+      DATATYPE UBYTE
+      ECU_ADDRESS 0x20001234
+      FORMAT "%.0"
+      MAX_REFRESH 0 10.0
+      LOWER_LIMIT 0
+      UPPER_LIMIT 2
+    /end MEASUREMENT
+
+    /begin MEASUREMENT Rbe_CddUTnet_UTnet1PlausSignal "Raw UTnet1 signal value"
+      DATATYPE UBYTE
+      ECU_ADDRESS 0x20001235
+      FORMAT "%.0"
+      MAX_REFRESH 0 10.0
+      LOWER_LIMIT 0
+      UPPER_LIMIT 255
+    /end MEASUREMENT
+
+    /begin CHARACTERISTIC CddUTnet_UTnet1PlausThreshold "Threshold for UTnet1 plausibility check"
+      VALUE
+      0x20002000
+      /begin AXIS_DESCR NO_AXIS_PTS 0 NO_FORMULA
+      /end AXIS_DESCR
+      UPPER_LIMIT 255
+      LOWER_LIMIT 0
+    /end CHARACTERISTIC
+
+    /begin CHARACTERISTIC CddUTnet_UTnet1PlausDebounce "Debounce counter for UTnet1 plausibility"
+      VALUE
+      0x20002002
+      /begin AXIS_DESCR NO_AXIS_PTS 0 NO_FORMULA
+      /end AXIS_DESCR
+      UPPER_LIMIT 65535
+      LOWER_LIMIT 0
+    /end CHARACTERISTIC
+
+  /end MODULE
+/end PROJECT
